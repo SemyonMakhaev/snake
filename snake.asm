@@ -14,18 +14,31 @@ chsnake1 	equ 10
 csnake2 	equ 4
 chsnake2 	equ 12
 ttime 		equ	4
-green_lose 	db 26 dup(0)
-			db 2 dup(0), 4 dup(cfood), 2 dup(0), 2 dup(cfood), 2 dup(0), cfood, 4 dup(0), cfood, 0, 5 dup(cfood), 2 dup(0)
-			db 2 dup(0), cfood, 4 dup(0), cfood, 2 dup(0), cfood, 0, 2 dup(cfood), 2 dup(0), 2 dup(cfood), 0, cfood, 6 dup(0)
-			db 2 dup(0), cfood, 0, 2 dup(cfood), 0, 4 dup(cfood), 0, cfood, 0, 2 dup(cfood), 0, cfood, 0, 4 dup(cfood), 3 dup(0)
-			db 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 2 dup(0), cfood, 0, cfood, 4 dup(0), cfood, 0, cfood, 6 dup(0)
-			db 2 dup(0), 4 dup(cfood), 0, cfood, 2 dup(0), cfood, 0, cfood, 4 dup(0), cfood, 0, 5 dup(cfood), 2 dup(0)
+game_over 	db 26 dup(0)
+			db 2 dup(0), 4 dup(12), 2 dup(0), 2 dup(12), 2 dup(0), 12, 4 dup(0), 12, 0, 5 dup(12), 2 dup(0)
+			db 2 dup(0), 12, 4 dup(0), 12, 2 dup(0), 12, 0, 2 dup(12), 2 dup(0), 2 dup(12), 0, 12, 6 dup(0)
+			db 2 dup(0), 12, 0, 2 dup(12), 0, 4 dup(12), 0, 12, 0, 2 dup(12), 0, 12, 0, 4 dup(12), 3 dup(0)
+			db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 2 dup(0), 12, 0, 12, 4 dup(0), 12, 0, 12, 6 dup(0)
+			db 2 dup(0), 4 dup(12), 0, 12, 2 dup(0), 12, 0, 12, 4 dup(0), 12, 0, 5 dup(12), 2 dup(0)
 			db 26 dup(0)
-			db 2 dup(0), 4 dup(cfood), 0, cfood, 3 dup(0), cfood, 0, 5 dup(cfood), 0, 5 dup(cfood), 2 dup(0)
-			db 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 3 dup(0), cfood, 0, cfood, 5 dup(0), cfood, 3 dup(0), cfood, 2 dup(0)
-			db 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 3 dup(0), cfood, 0, 4 dup(cfood), 2 dup(0), 5 dup(cfood), 2 dup(0)
-			db 2 dup(0), cfood, 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 2 dup(0), cfood, 5 dup(0), cfood, 0, 2 dup(cfood), 3 dup(0)
-			db 2 dup(0), 4 dup(cfood), 3 dup(0), cfood, 3 dup(0), 5 dup(cfood), 0, cfood, 2 dup(0), 2 dup(cfood), 2 dup(0)
+			db 2 dup(0), 4 dup(12), 0, 12, 3 dup(0), 12, 0, 5 dup(12), 0, 5 dup(12), 2 dup(0)
+			db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 3 dup(0), 12, 0, 12, 5 dup(0), 12, 3 dup(0), 12, 2 dup(0)
+			db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 3 dup(0), 12, 0, 4 dup(12), 2 dup(0), 5 dup(12), 2 dup(0)
+			db 2 dup(0), 12, 2 dup(0), 12, 2 dup(0), 12, 0, 12, 2 dup(0), 12, 5 dup(0), 12, 0, 2 dup(12), 3 dup(0)
+			db 2 dup(0), 4 dup(12), 3 dup(0), 12, 3 dup(0), 5 dup(12), 0, 12, 2 dup(0), 2 dup(12), 2 dup(0)
+			db 26 dup(0)
+bye			db 26 dup(0)
+			db 26 dup(0)
+			db 26 dup(0)
+			db 26 dup(0)
+			db 5 dup(0), 5 dup(cfood), 0, cfood, 3 dup(0), cfood, 0, 4 dup(cfood), 5 dup(0)
+			db 5 dup(0), cfood, 3 dup(0), cfood, 0, cfood, 3 dup(0), cfood, 0, cfood, 8 dup(0)
+			db 5 dup(0), 4 dup(cfood), 3 dup(0), 3 dup(cfood), 2 dup(0), 3 dup(cfood), 6 dup(0)
+			db 5 dup(0), cfood, 3 dup(0), cfood, 3 dup(0), cfood, 3 dup(0), cfood, 8 dup(0)
+			db 5 dup(0), 5 dup(cfood), 3 dup(0), cfood, 3 dup(0), 4 dup(cfood), 5 dup(0)
+			db 26 dup(0)
+			db 26 dup(0)
+			db 26 dup(0)
 			db 26 dup(0)
 			
 red_lose 	db 	26 dup(0)
@@ -56,46 +69,46 @@ standoff 	db 	26 dup(0)
 			db 	26 dup(0)
 
 
-field 		db 	64 dup (wall)
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 8 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 8 dup (0), wall
-			db 	wall, 8 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 8 dup (0), wall
-			db 	wall, 8 dup (0), 2 dup (wall), 13 dup (0), 16 dup (wall), 13 dup (0), 2 dup (wall), 8 dup (0), wall
-			db 	wall, 8 dup (0), 2 dup (wall), 42 dup (0), 2 dup (wall), 8 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 8 dup (0), 2 dup (wall), 42 dup (0), 2 dup (wall), 8 dup (0), wall
-			db 	wall, 8 dup (0), 2 dup (wall), 13 dup (0), 16 dup (wall), 13 dup (0), 2 dup (wall), 8 dup(0), wall
-			db 	wall, 8 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 8 dup (0), wall
-			db 	wall, 8 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 8 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	wall, 62 dup (0), wall
-			db 	64 dup (wall)
+field 		db 64 dup(wall)
+			db wall, 62 dup(0), wall
+			db wall, 62 dup(0), wall
+			db wall, 62 dup(0), wall
+			db wall, 3 dup(0), 56 dup(wall), 3 dup(0), wall
+			db wall, 3 dup(0), wall, 54 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 54 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 54 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), 48 dup(wall), 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 46 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 46 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 46 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), 40 dup(wall), 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 38 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 38 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 38 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), 31 dup(wall), 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 29 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 29 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 29 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 25 dup(0), wall, 3 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 25 dup(0), wall, 3 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 25 dup(0), wall, 3 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), 27 dup(wall), 3 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 33 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 33 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 33 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), 35 dup(wall), 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 42 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 42 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), wall, 42 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 3 dup(0), 44 dup(wall), 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 50 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 50 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), wall, 50 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
+			db wall, 3 dup(0), 52 dup(wall), 3 dup(0), wall, 3 dup(0), wall
+			db wall, 58 dup(0), wall, 3 dup(0), wall
+			db wall, 58 dup(0), wall, 3 dup(0), wall
+			db wall, 58 dup(0), wall, 3 dup(0), wall
+			db 64 dup(wall)
 dir_vars 	dw 	11h, next_dir1, -100h
 			dw 	1eh, next_dir1, -1h
 			dw 	1fh, next_dir1, 100h
@@ -119,10 +132,10 @@ exit_flag 	dw 	0
 buffer 		dw 	20 dup (0)
 head 		dw 	offset buffer
 tail 		dw 	offset buffer
-snake1 		dw 	1301h, 1302h, 1303h, 147 dup (0)
+snake1 		dw 	0201h, 0202h, 0203h, 147 dup (0)
 shead1 		dw 	offset snake1 + 4
 stail1 		dw 	offset snake1
-snake2 		dw 	143eh, 143dh, 143ch, 147 dup (0)
+snake2 		dw 	023eh, 023dh, 023ch, 147 dup (0)
 shead2 		dw	offset snake2 + 4
 stail2 		dw 	offset snake2
 curr_proc 	db 	1
@@ -185,7 +198,7 @@ h:
 	cmp 	dh, 40
 	jne 	h
 
-	mov 	dx, 1301h
+	mov 	dx, 0201h
 	mov 	al, csnake1
 	call	set_num
 	inc 	dx
@@ -196,7 +209,7 @@ h:
 
 	cmp 	[players], 2
 	jne 	no_second
-	mov 	dx, 143eh
+	mov 	dx, 023eh
 	mov 	al, csnake2
 	call	set_num
 	dec 	dx
@@ -257,59 +270,13 @@ exit_program:
 	int 	21h
 	push 	cs
 	pop 	ds
-	cmp 	[exit_flag], 3
-	je 		exitexit
 	cmp 	[exit_flag], 1
-	je 		looooose1
+	je 		exitexit
 	cmp 	[exit_flag], 2
-	je 		looooose2
-	cmp 	[exit_flag], 4
-	je 		tie
+	je 		looooose
 	jmp 	exitexit
-tie:
-	mov 	si, offset standoff
-	mov 	dx, 0d13h
-	mov 	ch, 0
-llloop3:
-	mov 	cl, 0
-	lloop3:
-		lodsb
-		push 	dx
-		push 	cx
-		add 	dx, cx
-		call 	set_num
-		pop 	cx
-		pop 	dx
-		add 	cl, 1
-		cmp 	cl, 26
-		jne 	lloop3
-	add 	ch, 1
-	cmp 	ch, 13
-	jne 	llloop3
-	jmp 	exitexit
-looooose2:
-	mov 	si, offset red_lose
-	mov 	dx, 0d13h
-	mov 	ch, 0
-llloop2:
-	mov 	cl, 0
-	lloop2:
-		lodsb
-		push 	dx
-		push 	cx
-		add 	dx, cx
-		call 	set_num
-		pop 	cx
-		pop 	dx
-		add 	cl, 1
-		cmp 	cl, 26
-		jne 	lloop2
-	add 	ch, 1
-	cmp 	ch, 13
-	jne 	llloop2
-	jmp 	exitexit
-looooose1:
-	mov 	si, offset green_lose
+looooose:
+	mov 	si, offset game_over
 	mov 	dx, 0d13h
 	mov 	ch, 0
 llloop1:
@@ -328,7 +295,28 @@ llloop1:
 	add 	ch, 1
 	cmp 	ch, 13
 	jne 	llloop1
+	xor 	ax, ax
+	int 	16h
 exitexit:
+	mov 	si, offset bye
+	mov 	dx, 0d13h
+	mov 	ch, 0
+elloop1:
+	mov 	cl, 0
+	eloop1:
+		lodsb
+		push 	dx
+		push 	cx
+		add 	dx, cx
+		call 	set_num
+		pop 	cx
+		pop 	dx
+		add 	cl, 1
+		cmp 	cl, 26
+		jne 	eloop1
+	add 	ch, 1
+	cmp 	ch, 13
+	jne 	elloop1
 	xor 	ax, ax
 	int 	16h
 	xor 	ax, ax
@@ -523,17 +511,11 @@ set_need_tail:
 	pop 	ax
  	ret
 lose:
-	cmp 	[curr_proc], 1
-	je 		lose1
 	mov 	[exit_flag], 2
 	pop 	ax
 	ret
-	lose1:
-	mov 	[exit_flag], 1
-	pop 	ax
-	ret
 no_lose:
-	mov 	[exit_flag], 4
+	mov 	[exit_flag], 1
 	pop 	ax
 	ret
 get_new_dx endp
@@ -642,7 +624,7 @@ int9handler proc
 	mov 	[bx], ax
 	jmp 	end_handler9
 set_exit_flag:
-	mov 	[exit_flag], 3
+	mov 	[exit_flag], 1
 end_handler9:
 	mov 	al, 20h
 	out 	20h, al
