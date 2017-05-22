@@ -207,7 +207,7 @@ no_bst1:
 ssleep:
 	cmp 	[need_play], 1
 	jne 	neednt_play
-	mov 	al, 0a6h
+	mov 	al, 0d6h
 	out 	43h, al
 	mov 	ax, 8609
 	out 	42h, al
