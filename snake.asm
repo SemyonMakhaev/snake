@@ -6,29 +6,27 @@
 start:
 	jmp 	M
 
-wall 		equ 28
-port1 		equ 1
-port2 		equ 0eh
-cfood 		equ 52
+wall 		equ 68
+cfood 		equ 78 ;52
 cboost 		equ 34
 csnake1 	equ 2
 chsnake1 	equ 10
 csnake2 	equ 4
 chsnake2 	equ 12
 ttime 		equ	4
-green_lose 	db 	26 dup(0)
-			db 	0, 4 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 0, csnake2, 2 dup(0), csnake2, 0
-			db 	0, csnake2, 4 dup(0), csnake2, 2 dup(0), csnake2, 0, csnake2, 4 dup(0), csnake2, 4 dup(0), 2 dup(csnake2), 0, csnake2, 0
-			db 	0, csnake2, 0, 2 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 0
-			db 	0, csnake2, 2 dup(0), csnake2, 0, 2 dup(csnake2), 3 dup(0), csnake2, 4 dup(0), csnake2, 4 dup(0), csnake2, 0, 2 dup(csnake2), 0
-			db 	0, 4 dup(csnake2), 0, csnake2, 0, 2 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 0, csnake2, 2 dup(0), csnake2, 0
-			db 	26 dup(0)
-			db 	4 dup(0), csnake2, 4 dup(0), 4 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 3 dup(0)
-			db 	4 dup(0), csnake2, 4 dup(0), csnake2, 2 dup(0), csnake2, 0, csnake2, 4 dup(0), csnake2, 6 dup(0)
-			db 	4 dup(0), csnake2, 4 dup(0), csnake2, 2 dup(0), csnake2, 0, 4 dup(csnake2), 0, 4 dup(csnake2), 3 dup(0)
-			db 	4 dup(0), csnake2, 4 dup(0), csnake2, 2 dup(0), csnake2, 4 dup(0), csnake2, 0, csnake2, 6 dup(0)
-			db 	4 dup(0), 4 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 0, 4 dup(csnake2), 3 dup(0)
-			db 	26 dup(0)
+green_lose 	db 26 dup(0)
+			db 2 dup(0), 4 dup(cfood), 2 dup(0), 2 dup(cfood), 2 dup(0), cfood, 4 dup(0), cfood, 0, 5 dup(cfood), 2 dup(0)
+			db 2 dup(0), cfood, 4 dup(0), cfood, 2 dup(0), cfood, 0, 2 dup(cfood), 2 dup(0), 2 dup(cfood), 0, cfood, 6 dup(0)
+			db 2 dup(0), cfood, 0, 2 dup(cfood), 0, 4 dup(cfood), 0, cfood, 0, 2 dup(cfood), 0, cfood, 0, 4 dup(cfood), 3 dup(0)
+			db 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 2 dup(0), cfood, 0, cfood, 4 dup(0), cfood, 0, cfood, 6 dup(0)
+			db 2 dup(0), 4 dup(cfood), 0, cfood, 2 dup(0), cfood, 0, cfood, 4 dup(0), cfood, 0, 5 dup(cfood), 2 dup(0)
+			db 26 dup(0)
+			db 2 dup(0), 4 dup(cfood), 0, cfood, 3 dup(0), cfood, 0, 5 dup(cfood), 0, 5 dup(cfood), 2 dup(0)
+			db 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 3 dup(0), cfood, 0, cfood, 5 dup(0), cfood, 3 dup(0), cfood, 2 dup(0)
+			db 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 3 dup(0), cfood, 0, 4 dup(cfood), 2 dup(0), 5 dup(cfood), 2 dup(0)
+			db 2 dup(0), cfood, 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 2 dup(0), cfood, 5 dup(0), cfood, 0, 2 dup(cfood), 3 dup(0)
+			db 2 dup(0), 4 dup(cfood), 3 dup(0), cfood, 3 dup(0), 5 dup(cfood), 0, cfood, 2 dup(0), 2 dup(cfood), 2 dup(0)
+			db 26 dup(0)
 			
 red_lose 	db 	26 dup(0)
 			db 	6 dup(0), 4 dup(csnake1), 0, 4 dup(csnake1), 0, 2 dup(csnake1), 8 dup(0)
@@ -58,46 +56,46 @@ standoff 	db 	26 dup(0)
 			db 	26 dup(0)
 
 
-field 		db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	0, 0, 0, port1, 56 dup (0), port2, 0, 0, 0
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	9 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 9 dup (0)
-			db 	9 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 9 dup (0)
-			db 	9 dup (0), 2 dup (wall), 13 dup (0), 16 dup (wall), 13 dup (0), 2 dup (wall), 9 dup (0)
-			db 	9 dup (0), 2 dup (wall), 42 dup (0), 2 dup (wall), 9 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	9 dup (0), 2 dup (wall), 42 dup (0), 2 dup (wall), 9 dup (0)
-			db 	9 dup (0), 2 dup (wall), 13 dup (0), 16 dup (wall), 13 dup (0), 2 dup (wall), 9 dup (0)
-			db 	9 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 9 dup (0)
-			db 	9 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 9 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	0, 0, 0, port2, 56 dup (0), port1, 0, 0, 0
-			db 	64 dup (0)
-			db 	64 dup (0)
-			db 	64 dup (0)
+field 		db 	64 dup (wall)
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 8 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 8 dup (0), wall
+			db 	wall, 8 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 8 dup (0), wall
+			db 	wall, 8 dup (0), 2 dup (wall), 13 dup (0), 16 dup (wall), 13 dup (0), 2 dup (wall), 8 dup (0), wall
+			db 	wall, 8 dup (0), 2 dup (wall), 42 dup (0), 2 dup (wall), 8 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 8 dup (0), 2 dup (wall), 42 dup (0), 2 dup (wall), 8 dup (0), wall
+			db 	wall, 8 dup (0), 2 dup (wall), 13 dup (0), 16 dup (wall), 13 dup (0), 2 dup (wall), 8 dup(0), wall
+			db 	wall, 8 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 8 dup (0), wall
+			db 	wall, 8 dup (0), 4 dup (wall), 11 dup (0), 16 dup (wall), 11 dup (0), 4 dup (wall), 8 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	wall, 62 dup (0), wall
+			db 	64 dup (wall)
 dir_vars 	dw 	11h, next_dir1, -100h
 			dw 	1eh, next_dir1, -1h
 			dw 	1fh, next_dir1, 100h
@@ -130,10 +128,6 @@ stail2 		dw 	offset snake2
 curr_proc 	db 	1
 need_tail 	db 	0
 tics 		db 	ttime
-ports_dir 	dw 	203h, 253ch, 302h, 243dh, 403h, 233ch, 304h, 243bh
- 			dw 	233ch, 403h, 243bh, 304h, 253ch, 203h, 243dh, 302h
- 			dw 	23ch, 2503h, 33bh, 2404h, 43ch, 2303h, 33dh, 2402h
- 			dw 	2303h, 43ch, 2402h, 33dh, 2503h, 23ch, 2404h, 33bh
 prev_pos 	dw 	?
 need_play 	db 	0
 boost1 		db 	0
@@ -473,19 +467,6 @@ get_new_dx proc
 	je 		@@1
 	cmp 	dh, 40
 	je 		@@2
-	cmp 	dx, 303h
-	je 		in_port
-	cmp 	dx, 33ch
-	je 		in_port
-	cmp 	dx, 2403h
-	je 		in_port
-	cmp 	dx, 243ch
-	je 		in_port
-	jmp 	check_cell
-in_port:
-	mov 	di, offset ports_dir
-	mov 	cx, 16
-	mov 	ax, [prev_pos]
 @@5:
 	scasw
 	je 		@@6
