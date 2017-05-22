@@ -467,6 +467,7 @@ get_new_dx proc
 	je 		@@1
 	cmp 	dh, 40
 	je 		@@2
+	jmp 	check_cell
 @@5:
 	scasw
 	je 		@@6
