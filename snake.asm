@@ -6,14 +6,14 @@
 start:
 	jmp 	M
 
-wall 		equ 68
-cfood 		equ 78 ;52
+block 		equ 68
+cfood 		equ 78
 cboost 		equ 34
 csnake1 	equ 2
 chsnake1 	equ 10
 csnake2 	equ 4
 chsnake2 	equ 12
-ttime 		equ	4
+ttime 		equ	3
 game_over 	db 26 dup(0)
 			db 2 dup(0), 4 dup(12), 2 dup(0), 2 dup(12), 2 dup(0), 12, 4 dup(0), 12, 0, 5 dup(12), 2 dup(0)
 			db 2 dup(0), 12, 4 dup(0), 12, 2 dup(0), 12, 0, 2 dup(12), 2 dup(0), 2 dup(12), 0, 12, 6 dup(0)
@@ -27,88 +27,59 @@ game_over 	db 26 dup(0)
 			db 2 dup(0), 12, 2 dup(0), 12, 2 dup(0), 12, 0, 12, 2 dup(0), 12, 5 dup(0), 12, 0, 2 dup(12), 3 dup(0)
 			db 2 dup(0), 4 dup(12), 3 dup(0), 12, 3 dup(0), 5 dup(12), 0, 12, 2 dup(0), 2 dup(12), 2 dup(0)
 			db 26 dup(0)
-bye			db 26 dup(0)
-			db 26 dup(0)
-			db 26 dup(0)
-			db 26 dup(0)
-			db 5 dup(0), 5 dup(cfood), 0, cfood, 3 dup(0), cfood, 0, 4 dup(cfood), 5 dup(0)
-			db 5 dup(0), cfood, 3 dup(0), cfood, 0, cfood, 3 dup(0), cfood, 0, cfood, 8 dup(0)
-			db 5 dup(0), 4 dup(cfood), 3 dup(0), 3 dup(cfood), 2 dup(0), 3 dup(cfood), 6 dup(0)
-			db 5 dup(0), cfood, 3 dup(0), cfood, 3 dup(0), cfood, 3 dup(0), cfood, 8 dup(0)
-			db 5 dup(0), 5 dup(cfood), 3 dup(0), cfood, 3 dup(0), 4 dup(cfood), 5 dup(0)
-			db 26 dup(0)
-			db 26 dup(0)
-			db 26 dup(0)
-			db 26 dup(0)
-			
-red_lose 	db 	26 dup(0)
-			db 	6 dup(0), 4 dup(csnake1), 0, 4 dup(csnake1), 0, 2 dup(csnake1), 8 dup(0)
-			db 	6 dup(0), csnake1, 2 dup(0), csnake1, 0, csnake1, 4 dup(0), csnake1, 0, csnake1, 7 dup(0)
-			db 	6 dup(0), 4 dup(csnake1), 0, 4 dup(csnake1), 0, csnake1, 2 dup(0), csnake1, 6 dup(0)
-			db 	6 dup(0), 2 dup(csnake1), 3 dup(0), csnake1, 4 dup(0), csnake1, 2 dup(0), csnake1, 6 dup(0)
-			db 	6 dup(0), csnake1, 0, 2 dup(csnake1), 0, 4 dup(csnake1), 0, 3 dup(csnake1), 7 dup(0)
-			db 	26 dup(0)
-			db 	4 dup(0), csnake1, 4 dup(0), 4 dup(csnake1), 0, 4 dup(csnake1), 0, 4 dup(csnake1), 3 dup(0)
-			db 	4 dup(0), csnake1, 4 dup(0), csnake1, 2 dup(0), csnake1, 0, csnake1, 4 dup(0), csnake1, 6 dup(0)
-			db 	4 dup(0), csnake1, 4 dup(0), csnake1, 2 dup(0), csnake1, 0, 4 dup(csnake1), 0, 4 dup(csnake1), 3 dup(0)
-			db 	4 dup(0), csnake1, 4 dup(0), csnake1, 2 dup(0), csnake1, 4 dup(0), csnake1, 0, csnake1, 6 dup(0)
-			db  4 dup(0), 4 dup(csnake1), 0, 4 dup(csnake1), 0, 4 dup(csnake1), 0, 4 dup(csnake1), 3 dup(0)
-			db 	26 dup(0)
-standoff 	db 	26 dup(0)
-			db 	0, 4 dup(cfood), 0, 4 dup(cfood), 2 dup(0), 2 dup(cfood), 2 dup(0), cfood, 2 dup(0), cfood, 0, 2 dup(cfood), 3 dup(0)
-			db 	0, cfood, 5 dup(0), 2 dup(cfood), 2 dup(0), cfood, 2 dup(0), cfood, 0, 2 dup(cfood), 0, cfood, 0, cfood, 0, cfood, 2 dup(0)
-			db 	0, 4 dup(cfood), 2 dup(0), 2 dup(cfood), 2 dup(0), 4 dup(cfood), 0, 4 dup(cfood), 0, cfood, 2 dup(0), cfood, 0
-			db 	4 dup(0), cfood, 2 dup(0), 2 dup(cfood), 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 0, 2 dup(cfood), 0, cfood, 2 dup(0), cfood, 0
-			db 	0, 4 dup(cfood), 2 dup(0), 2 dup(cfood), 2 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 2 dup(0), cfood, 0, 3 dup(cfood), 2 dup(0)
-			db 	26 dup(0)
-			db 	6 dup(0), 4 dup(cfood), 0, 4 dup(cfood), 0, 4 dup(cfood), 6 dup(0)
-			db 	6 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 4 dup(0), cfood, 9 dup(0)
-			db 	6 dup(0), cfood, 2 dup(0), cfood, 0, 4 dup(cfood), 0, 4 dup(cfood), 6 dup(0)
-			db 	6 dup(0), cfood, 2 dup(0), cfood, 0, cfood, 4 dup(0), cfood, 9 dup(0)
-			db 	6 dup(0), 4 dup(cfood), 0, cfood, 4 dup(0), cfood, 9 dup(0)
-			db 	26 dup(0)
-
-
-field 		db 64 dup(wall)
-			db wall, 62 dup(0), wall
-			db wall, 62 dup(0), wall
-			db wall, 62 dup(0), wall
-			db wall, 3 dup(0), 56 dup(wall), 3 dup(0), wall
-			db wall, 3 dup(0), wall, 54 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 54 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 54 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), 48 dup(wall), 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 46 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 46 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 46 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), 40 dup(wall), 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 38 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 38 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 38 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), 31 dup(wall), 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 29 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 29 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 29 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 25 dup(0), wall, 3 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 25 dup(0), wall, 3 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 25 dup(0), wall, 3 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), 27 dup(wall), 3 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 33 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 33 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 33 dup(0), wall, 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), 35 dup(wall), 4 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 42 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 42 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), wall, 42 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 3 dup(0), 44 dup(wall), 3 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 50 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 50 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), wall, 50 dup(0), wall, 3 dup(0), wall, 3 dup(0), wall
-			db wall, 3 dup(0), 52 dup(wall), 3 dup(0), wall, 3 dup(0), wall
-			db wall, 58 dup(0), wall, 3 dup(0), wall
-			db wall, 58 dup(0), wall, 3 dup(0), wall
-			db wall, 58 dup(0), wall, 3 dup(0), wall
-			db 64 dup(wall)
+bye			db 26 dup(cfood)
+			db cfood, 24 dup(0), cfood
+			db cfood, 24 dup(0), cfood
+			db cfood, 24 dup(0), cfood
+			db cfood, 4 dup(0), 5 dup(cfood), 0, cfood, 3 dup(0), cfood, 0, 4 dup(cfood), 4 dup(0), cfood
+			db cfood, 4 dup(0), cfood, 3 dup(0), cfood, 0, cfood, 3 dup(0), cfood, 0, cfood, 7 dup(0), cfood
+			db cfood, 4 dup(0), 4 dup(cfood), 3 dup(0), 3 dup(cfood), 2 dup(0), 3 dup(cfood), 5 dup(0), cfood
+			db cfood, 4 dup(0), cfood, 3 dup(0), cfood, 3 dup(0), cfood, 3 dup(0), cfood, 7 dup(0), cfood
+			db cfood, 4 dup(0), 5 dup(cfood), 3 dup(0), cfood, 3 dup(0), 4 dup(cfood), 4 dup(0), cfood
+			db cfood, 24 dup(0), cfood
+			db cfood, 24 dup(0), cfood
+			db cfood, 24 dup(0), cfood
+			db 26 dup(cfood)
+field 		db 64 dup(block)
+			db block, 62 dup(0), block
+			db block, 62 dup(0), block
+			db block, 62 dup(0), block
+			db block, 3 dup(0), 56 dup(block), 3 dup(0), block
+			db block, 3 dup(0), block, 54 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 54 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 54 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), 48 dup(block), 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 46 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 46 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 46 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), 40 dup(block), 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 38 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 38 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 38 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), 31 dup(block), 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 29 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 29 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 29 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 25 dup(0), block, 3 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 25 dup(0), block, 3 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 25 dup(0), block, 3 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), 27 dup(block), 3 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 33 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 33 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 33 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), 35 dup(block), 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 42 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 42 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), block, 42 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 3 dup(0), 44 dup(block), 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 50 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 50 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), block, 50 dup(0), block, 3 dup(0), block, 3 dup(0), block
+			db block, 3 dup(0), 52 dup(block), 3 dup(0), block, 3 dup(0), block
+			db block, 62 dup(0), block
+			db block, 62 dup(0), block
+			db block, 62 dup(0), block
+			db 64 dup(block)
 dir_vars 	dw 	11h, next_dir1, -100h
 			dw 	1eh, next_dir1, -1h
 			dw 	1fh, next_dir1, 100h
@@ -485,7 +456,7 @@ check_cell:
 	je 		set_need_tail
 	cmp 	al, cboost
 	je 		need_boost
-	cmp 	al, wall
+	cmp 	al, block
 	je 		lose
 	cmp 	al, csnake1
 	je 		lose
