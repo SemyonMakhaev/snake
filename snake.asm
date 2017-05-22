@@ -80,14 +80,14 @@ field 		db 64 dup(block)
 			db block, 62 dup(0), block
 			db block, 62 dup(0), block
 			db 64 dup(block)
-dir_vars 	dw 	11h, next_dir1, -100h
-			dw 	1eh, next_dir1, -1h
-			dw 	1fh, next_dir1, 100h
-			dw 	20h, next_dir1, 1h
-			dw 	48h, next_dir2, -100h
-			dw 	4bh, next_dir2, -1h
-			dw 	50h, next_dir2, 100h
-			dw 	4dh, next_dir2, 1h
+dir_vars 	dw 	48h, next_dir1, -100h
+			dw 	4bh, next_dir1, -1h
+			dw 	50h, next_dir1, 100h
+			dw 	4dh, next_dir1, 1h
+			dw 	11h, next_dir2, -100h
+			dw 	1eh, next_dir2, -1h
+			dw 	1fh, next_dir2, 100h
+			dw 	20h, next_dir2, 1h
 old_mode 	db 	?
 msg 		db 	'Type snakes count (1 or 2)', 24h
 players 	db 	?
@@ -207,7 +207,7 @@ no_bst1:
 ssleep:
 	cmp 	[need_play], 1
 	jne 	neednt_play
-	mov 	al, 0b6h
+	mov 	al, 0a6h
 	out 	43h, al
 	mov 	ax, 8609
 	out 	42h, al
