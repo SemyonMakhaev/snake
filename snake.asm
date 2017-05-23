@@ -4,16 +4,15 @@
 	org 	100h
 	locals
 start:
-	jmp 	M
+	jmp 	S
 
-block 		equ 68
-cfood 		equ 78
-cboost 		equ 34
-csnake1 	equ 2
-chsnake1 	equ 10
-csnake2 	equ 4
-chsnake2 	equ 12
-ttime 		equ	3
+barrier 		equ 68
+food_color 		equ 78
+first_snake_color 	equ 3
+first_snake_head_color 	equ 11
+second_snake_color 	equ 5
+second_snake_head_color 	equ 13
+timer_velocity 		equ	3
 game_over 	db 26 dup(0)
 			db 2 dup(0), 4 dup(12), 2 dup(0), 2 dup(12), 2 dup(0), 12, 4 dup(0), 12, 0, 5 dup(12), 2 dup(0)
 			db 2 dup(0), 12, 4 dup(0), 12, 2 dup(0), 12, 0, 2 dup(12), 2 dup(0), 2 dup(12), 0, 12, 6 dup(0)
@@ -27,60 +26,60 @@ game_over 	db 26 dup(0)
 			db 2 dup(0), 12, 2 dup(0), 12, 2 dup(0), 12, 0, 12, 2 dup(0), 12, 5 dup(0), 12, 0, 2 dup(12), 3 dup(0)
 			db 2 dup(0), 4 dup(12), 3 dup(0), 12, 3 dup(0), 5 dup(12), 0, 12, 2 dup(0), 2 dup(12), 2 dup(0)
 			db 26 dup(0)
-bye			db 26 dup(cfood)
-			db cfood, 24 dup(0), cfood
-			db cfood, 24 dup(0), cfood
-			db cfood, 24 dup(0), cfood
-			db cfood, 4 dup(0), 5 dup(cfood), 0, cfood, 3 dup(0), cfood, 0, 4 dup(cfood), 4 dup(0), cfood
-			db cfood, 4 dup(0), cfood, 3 dup(0), cfood, 0, cfood, 3 dup(0), cfood, 0, cfood, 7 dup(0), cfood
-			db cfood, 4 dup(0), 4 dup(cfood), 3 dup(0), 3 dup(cfood), 2 dup(0), 3 dup(cfood), 5 dup(0), cfood
-			db cfood, 4 dup(0), cfood, 3 dup(0), cfood, 3 dup(0), cfood, 3 dup(0), cfood, 7 dup(0), cfood
-			db cfood, 4 dup(0), 5 dup(cfood), 3 dup(0), cfood, 3 dup(0), 4 dup(cfood), 4 dup(0), cfood
-			db cfood, 24 dup(0), cfood
-			db cfood, 24 dup(0), cfood
-			db cfood, 24 dup(0), cfood
-			db 26 dup(cfood)
-field 		db 64 dup(block)
-			db block, 62 dup(0), block
-			db block, 62 dup(0), block
-			db block, 62 dup(0), block
-			db block, 3 dup(0), 56 dup(block), 3 dup(0), block
-			db block, 3 dup(0), block, 54 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 54 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 54 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), 48 dup(block), 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 46 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 46 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 46 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), 40 dup(block), 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 38 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 38 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 38 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), 31 dup(block), 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 29 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 29 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 29 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 25 dup(0), block, 3 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 25 dup(0), block, 3 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 25 dup(0), block, 3 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), 27 dup(block), 3 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 33 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 33 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block, 33 dup(0), block, 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), 35 dup(block), 4 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 42 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 42 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), block, 42 dup(0), block, 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 3 dup(0), 44 dup(block), 3 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 50 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 50 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), block, 50 dup(0), block, 3 dup(0), block, 3 dup(0), block
-			db block, 3 dup(0), 52 dup(block), 3 dup(0), block, 3 dup(0), block
-			db block, 62 dup(0), block
-			db block, 62 dup(0), block
-			db block, 62 dup(0), block
-			db 64 dup(block)
-dir_vars 	dw 	48h, next_dir1, -100h
+bye			db 26 dup(food_color)
+			db food_color, 24 dup(0), food_color
+			db food_color, 24 dup(0), food_color
+			db food_color, 24 dup(0), food_color
+			db food_color, 4 dup(0), 5 dup(food_color), 0, food_color, 3 dup(0), food_color, 0, 4 dup(food_color), 4 dup(0), food_color
+			db food_color, 4 dup(0), food_color, 3 dup(0), food_color, 0, food_color, 3 dup(0), food_color, 0, food_color, 7 dup(0), food_color
+			db food_color, 4 dup(0), 4 dup(food_color), 3 dup(0), 3 dup(food_color), 2 dup(0), 3 dup(food_color), 5 dup(0), food_color
+			db food_color, 4 dup(0), food_color, 3 dup(0), food_color, 3 dup(0), food_color, 3 dup(0), food_color, 7 dup(0), food_color
+			db food_color, 4 dup(0), 5 dup(food_color), 3 dup(0), food_color, 3 dup(0), 4 dup(food_color), 4 dup(0), food_color
+			db food_color, 24 dup(0), food_color
+			db food_color, 24 dup(0), food_color
+			db food_color, 24 dup(0), food_color
+			db 26 dup(food_color)
+map 		db 64 dup(barrier)
+			db barrier, 62 dup(0), barrier
+			db barrier, 62 dup(0), barrier
+			db barrier, 62 dup(0), barrier
+			db barrier, 3 dup(0), 56 dup(barrier), 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), 48 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 40 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 31 dup(barrier), 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 27 dup(barrier), 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 35 dup(barrier), 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 3 dup(0), 44 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 3 dup(0), 52 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier
+			db barrier, 62 dup(0), barrier
+			db barrier, 62 dup(0), barrier
+			db barrier, 62 dup(0), barrier
+			db 64 dup(barrier)
+vectors 	dw 	48h, next_dir1, -100h
 			dw 	4bh, next_dir1, -1h
 			dw 	50h, next_dir1, 100h
 			dw 	4dh, next_dir1, 1h
@@ -88,13 +87,13 @@ dir_vars 	dw 	48h, next_dir1, -100h
 			dw 	1eh, next_dir2, -1h
 			dw 	1fh, next_dir2, 100h
 			dw 	20h, next_dir2, 1h
-old_mode 	db 	?
-msg 		db 	'Type snakes count (1 or 2)', 24h
-players 	db 	?
-old_seg9 	dw 	?
-old_off9 	dw 	?
-old_seg1c 	dw 	?
-old_off1c 	dw 	?
+prev_mode 	db 	?
+mess 		db 	'Type snakes count (1 or 2)', 24h
+snakes_count 	db 	?
+old_9vect_seg 	dw 	?
+old_9vect_off 	dw 	?
+old_1c_vect_seg 	dw 	?
+old_1c_vect_off 	dw 	?
 next_dir1 	dw 	1
 next_dir2 	dw 	-1
 direction1 	dw 	1
@@ -103,204 +102,76 @@ exit_flag 	dw 	0
 buffer 		dw 	20 dup (0)
 head 		dw 	offset buffer
 tail 		dw 	offset buffer
-snake1 		dw 	0201h, 0202h, 0203h, 147 dup (0)
+snake1 		dw 	0201h, 0202h, 0203h, 147 dup(0)
 shead1 		dw 	offset snake1 + 4
 stail1 		dw 	offset snake1
-snake2 		dw 	023eh, 023dh, 023ch, 147 dup (0)
+snake2 		dw 	253eh, 253dh, 253ch, 147 dup(0)
 shead2 		dw	offset snake2 + 4
 stail2 		dw 	offset snake2
 curr_proc 	db 	1
-need_tail 	db 	0
-tics 		db 	ttime
+grow_snake 	db 	0
+tics 		db 	timer_velocity
 prev_pos 	dw 	?
-need_play 	db 	0
-boost1 		db 	0
-boost2 		db 	0
+play_sound 	db 	0
 
-M:
-	mov 	ah, 0fh
-	int 	10h
-	mov  	[old_mode], al
-	mov 	ah, 09h
-	mov 	dx, offset msg
-	int 	21h
-option:
-	xor 	ax, ax
-	int 	16h
-	cmp 	al, 31h
-	je 		readed
-	cmp 	al, 32h
-	je 		readed
-	jmp 	option
-readed:
-	sub 	al, 30h
-	mov 	[players], al
-	mov 	ax, 3509h
-	int 	21h
-	mov 	[old_seg9], es
-	mov 	[old_off9], bx
-	mov 	dx, offset int9handler
-	mov 	ax, 2509h
-	int 	21h
-	mov 	ax, 351ch
-	int 	21h
-	mov 	[old_seg1c], es
-	mov 	[old_off1c], bx
-	mov 	ax, 251ch
-	mov 	dx, offset int1chandler
-	int 	21h
+handler_1c proc
+	cli
+	sub 	[tics], 1
+	sti
+	iret
+handler_1c endp
 
-	push 	cs
-	pop 	es
-
-	mov 	ax, 13h
-	int 	10h
-
-	xor 	dx, dx
-h:
-	mov 	dl, 0
-	w:
-		call 	get_value
-		call 	write_cell
-		add 	dl, 1
-		cmp 	dl, 64
-		jne 	w
-	add 	dh, 1
-	cmp 	dh, 40
-	jne 	h
-
-	mov 	dx, 0201h
-	mov 	al, csnake1
-	call	set_num
-	inc 	dx
-	call 	set_num
-	inc 	dx
-	mov 	al, chsnake1
-	call 	set_num
-
-	cmp 	[players], 2
-	jne 	no_second
-	mov 	dx, 023eh
-	mov 	al, csnake2
-	call	set_num
-	dec 	dx
-	call 	set_num
-	dec 	dx
-	mov 	al, chsnake2
-	call 	set_num
-no_second:
-	call 	set_food
-main_loop:
-	call 	move_snake1
-	cmp 	[boost1], 0
-	je 		no_bst1
-	sub 	[boost1], 1
-	call 	move_snake1
-no_bst1:
-	cmp 	[players], 2
-	jne 	ssleep
-	call 	move_snake2
-	cmp 	[boost2], 0
-	je 		ssleep
-	sub 	[boost2], 1
-	call 	move_snake2
-ssleep:
-	cmp 	[need_play], 1
-	jne 	neednt_play
-	mov 	al, 0d6h
-	out 	43h, al
-	mov 	ax, 8609
-	out 	42h, al
-	mov 	al, ah
-	out 	42h, al
+handler_9 proc
+	cli
+	push 	ax
+	push 	si
+	push 	di
+	in 		al, 60h
+	push 	ax
 	in 		al, 61h
-	or 		al, 3
+	or 		al, 80h
 	out 	61h, al
-neednt_play:
-	cmp 	[tics], 0
-	jg 		neednt_play
-	mov 	[need_play], 0
-	in 		al, 61h
-	and 	al, 0fdh
+	and 	al, 7fh
 	out 	61h, al
-	mov 	[tics], ttime
-	cmp 	[exit_flag], 0
-	jne 	exit_program
-	jmp 	main_loop
+	pop 	ax
+	test 	al, 80h
+	jnz 	end_handler_9
+	cmp 	al, 1
+	je 		ex_flag
+	mov 	cx, 8
+	mov 	ah, 0
+	mov 	di, offset vectors
+@@1:
+	scasw
+	je 		@@2
+	add 	di, 4
+	loop 	@@1
+	jmp 	end_handler_9
+@@2:
+	mov 	si, di
+	lodsw
+	mov 	bx, ax
+	lodsw
+	mov 	[bx], ax
+	jmp 	end_handler_9
+ex_flag:
+	mov 	[exit_flag], 1
+end_handler_9:
+	mov 	al, 20h
+	out 	20h, al
+	pop 	di
+	pop 	si
+	pop 	ax
+	sti
+	iret
+handler_9 endp
 
-exit_program:
-	mov 	dx, [old_off9]
-	mov 	ds, [old_seg9]
-	mov 	ax, 2509h
-	int 	21h
-	push 	cs
-	pop 	ds
-	mov 	dx, [old_off1c]
-	mov 	ds, [old_seg1c]
-	mov 	ax, 251ch
-	int 	21h
-	push 	cs
-	pop 	ds
-	cmp 	[exit_flag], 1
-	je 		exitexit
-	cmp 	[exit_flag], 2
-	je 		looooose
-	jmp 	exitexit
-looooose:
-	mov 	si, offset game_over
-	mov 	dx, 0d13h
-	mov 	ch, 0
-llloop1:
-	mov 	cl, 0
-	lloop1:
-		lodsb
-		push 	dx
-		push 	cx
-		add 	dx, cx
-		call 	set_num
-		pop 	cx
-		pop 	dx
-		add 	cl, 1
-		cmp 	cl, 26
-		jne 	lloop1
-	add 	ch, 1
-	cmp 	ch, 13
-	jne 	llloop1
-	xor 	ax, ax
-	int 	16h
-exitexit:
-	mov 	si, offset bye
-	mov 	dx, 0d13h
-	mov 	ch, 0
-elloop1:
-	mov 	cl, 0
-	eloop1:
-		lodsb
-		push 	dx
-		push 	cx
-		add 	dx, cx
-		call 	set_num
-		pop 	cx
-		pop 	dx
-		add 	cl, 1
-		cmp 	cl, 26
-		jne 	eloop1
-	add 	ch, 1
-	cmp 	ch, 13
-	jne 	elloop1
-	xor 	ax, ax
-	int 	16h
-	xor 	ax, ax
-	mov 	al, [old_mode]
-	int 	10h
-	ret
-
-move_snake1 proc
+first_snake_step proc
 	mov 	[curr_proc], 1
 	mov 	bx, [shead1]
 	mov 	dx, [bx]
 	mov 	[prev_pos], dx
-	mov 	al, csnake1
+	mov 	al, first_snake_color
 	call 	set_num
 	add 	[shead1], 2
 	cmp 	[shead1], offset shead1
@@ -318,10 +189,10 @@ move_snake1 proc
 	call 	get_new_dx
 	mov 	bx, [shead1]
 	mov 	[bx], dx
-	mov 	al, chsnake1
+	mov 	al, first_snake_head_color
 	call 	set_num
 
-	cmp 	[need_tail], 1
+	cmp 	[grow_snake], 1
 	je 		@@3
 	mov 	bx, [stail1]
 	mov 	dx, [bx]
@@ -332,16 +203,16 @@ move_snake1 proc
 	jne 	@@3
 	mov 	[stail1], offset snake1
 @@3:
-	mov 	[need_tail], 0
+	mov 	[grow_snake], 0
 	ret
-move_snake1 endp
+first_snake_step endp
 
-move_snake2 proc
+second_snake_step proc
 	mov 	[curr_proc], 2
 	mov 	bx, [shead2]
 	mov 	dx, [bx]
 	mov 	[prev_pos], dx
-	mov 	al, csnake2
+	mov 	al, second_snake_color
 	call 	set_num
 	add 	[shead2], 2
 	cmp 	[shead2], offset shead2
@@ -359,10 +230,10 @@ move_snake2 proc
 	call 	get_new_dx
 	mov 	bx, [shead2]
 	mov 	[bx], dx
-	mov 	al, chsnake2
+	mov 	al, second_snake_head_color
 	call 	set_num
 
-	cmp 	[need_tail], 1
+	cmp 	[grow_snake], 1
 	je 		@@3
 	mov 	bx, [stail2]
 	mov 	dx, [bx]
@@ -373,9 +244,9 @@ move_snake2 proc
 	jne 	@@3
 	mov 	[stail2], offset snake2
 @@3:
-	mov 	[need_tail], 0
+	mov 	[grow_snake], 0
 	ret
-move_snake2 endp
+second_snake_step endp
 
 set_food proc
 	push 	ax
@@ -396,24 +267,12 @@ set_food proc
 	call 	get_value
 	cmp 	al, 0
 	jne 	@@1
-	
-	cmp 	[counter], 4
-	jne 	no_boost
-	mov 	[counter], 0
-	mov 	al, cboost
-	call 	set_num
-	pop 	dx
-	pop 	ax
-	ret
 
-no_boost:
-	add 	[counter], 1
-	mov 	al, cfood
+	mov 	al, food_color
 	call 	set_num
 	pop 	dx
 	pop 	ax
 	ret
-	counter 	db 	0
 set_food endp
 
 get_new_dx proc
@@ -452,33 +311,24 @@ get_new_dx proc
  	jmp 	check_cell
 check_cell:
 	call 	get_value
-	cmp 	al, cfood
-	je 		set_need_tail
-	cmp 	al, cboost
-	je 		need_boost
-	cmp 	al, block
+	cmp 	al, food_color
+	je 		set_grow_snake
+	cmp 	al, barrier
 	je 		lose
-	cmp 	al, csnake1
+	cmp 	al, first_snake_color
 	je 		lose
-	cmp 	al, csnake2
+	cmp 	al, second_snake_color
 	je 		lose
-	cmp 	al, chsnake1
+	cmp 	al, first_snake_head_color
 	je 		no_lose
-	cmp 	al, chsnake2
+	cmp 	al, second_snake_head_color
 	je 		no_lose
 	pop 	ax
 	ret
-need_boost:
-	cmp 	[curr_proc], 1
-	je 		bst1
-	mov 	[boost2], 20
-	jmp 	set_need_tail
-bst1:
-	mov 	[boost1], 20
-set_need_tail:
+set_grow_snake:
 	call 	set_food
-	mov 	[need_play], 1
-	mov 	[need_tail], 1
+	mov 	[play_sound], 1
+	mov 	[grow_snake], 1
 	pop 	ax
  	ret
 lose:
@@ -502,7 +352,7 @@ get_value proc
 	add 	ax, dx
 	pop 	dx
 	mov 	bx, ax
-	add 	bx, offset field
+	add 	bx, offset map
 	mov 	al, [bx]
 	pop 	bx
 	pop 	dx
@@ -516,7 +366,7 @@ set_num proc
 	push 	dx
 	mov 	dh, 0
 	add 	bx, dx
-	mov 	di, offset field
+	mov 	di, offset map
 	add 	di, bx
 	stosb
 	pop 	dx
@@ -554,55 +404,166 @@ write_cell proc
 	ret
 write_cell endp
 
-int1chandler proc
-	cli
-	sub 	[tics], 1
-	sti
-	iret
-int1chandler endp
-
-int9handler proc
-	cli
-	push 	ax
-	push 	si
-	push 	di
-	in 		al, 60h
-	push 	ax
+S:
+	mov 	ah, 0fh
+	int 	10h
+	mov  	[prev_mode], al
+	mov 	ah, 09h
+	mov 	dx, offset mess
+	int 	21h
+type_count:
+	xor 	ax, ax
+	int 	16h
+	cmp 	al, 31h
+	je 		count_set
+	cmp 	al, 32h
+	je 		count_set
+	jmp 	type_count
+count_set:
+	sub 	al, 30h
+	mov 	[snakes_count], al
+	mov 	ax, 3509h
+	int 	21h
+	mov 	[old_9vect_seg], es
+	mov 	[old_9vect_off], bx
+	mov 	dx, offset handler_9
+	mov 	ax, 2509h
+	int 	21h
+	mov 	ax, 351ch
+	int 	21h
+	mov 	[old_1c_vect_seg], es
+	mov 	[old_1c_vect_off], bx
+	mov 	ax, 251ch
+	mov 	dx, offset handler_1c
+	int 	21h
+	push 	cs
+	pop 	es
+	mov 	ax, 13h
+	int 	10h
+	xor 	dx, dx
+map_height:
+	mov 	dl, 0
+map_width:
+	call 	get_value
+	call 	write_cell
+	add 	dl, 1
+	cmp 	dl, 64
+	jne 	map_width
+	add 	dh, 1
+	cmp 	dh, 40
+	jne 	map_height
+	mov 	dx, 0201h
+	mov 	al, first_snake_color
+	call	set_num
+	inc 	dx
+	call 	set_num
+	inc 	dx
+	mov 	al, first_snake_head_color
+	call 	set_num
+	cmp 	[snakes_count], 2
+	jne 	continue_init
+	mov 	dx, 253eh
+	mov 	al, second_snake_color
+	call	set_num
+	dec 	dx
+	call 	set_num
+	dec 	dx
+	mov 	al, second_snake_head_color
+	call 	set_num
+continue_init:
+	call 	set_food
+mainloop:
+	call 	first_snake_step
+	cmp 	[snakes_count], 2
+	jne 	delay
+	call 	second_snake_step
+delay:
+	cmp 	[play_sound], 1
+	jne 	no_sound
+	mov 	al, 0b6h
+	out 	43h, al
+	mov 	ax, 1500
+	out 	42h, al
+	mov 	al, ah
+	out 	42h, al
 	in 		al, 61h
-	or 		al, 80h
+	or 		al, 3
 	out 	61h, al
-	and 	al, 7fh
+no_sound:
+	cmp 	[tics], 0
+	jg 		no_sound
+	mov 	[play_sound], 0
+	in 		al, 61h
+	and 	al, 0fdh
 	out 	61h, al
-	pop 	ax
-	test 	al, 80h
-	jnz 	end_handler9
-	cmp 	al, 1
-	je 		set_exit_flag
-	mov 	cx, 8
-	mov 	ah, 0
-	mov 	di, offset dir_vars
-@@1:
-	scasw
-	je 		@@2
-	add 	di, 4
-	loop 	@@1
-	jmp 	end_handler9
-@@2:
-	mov 	si, di
-	lodsw
-	mov 	bx, ax
-	lodsw
-	mov 	[bx], ax
-	jmp 	end_handler9
-set_exit_flag:
-	mov 	[exit_flag], 1
-end_handler9:
-	mov 	al, 20h
-	out 	20h, al
-	pop 	di
-	pop 	si
-	pop 	ax
-	sti
-	iret
-int9handler endp
-end 	start
+	mov 	[tics], timer_velocity
+	cmp 	[exit_flag], 0
+	jne 	exit_prog
+	jmp 	mainloop
+exit_prog:
+	mov 	dx, [old_9vect_off]
+	mov 	ds, [old_9vect_seg]
+	mov 	ax, 2509h
+	int 	21h
+	push 	cs
+	pop 	ds
+	mov 	dx, [old_1c_vect_off]
+	mov 	ds, [old_1c_vect_seg]
+	mov 	ax, 251ch
+	int 	21h
+	push 	cs
+	pop 	ds
+	cmp 	[exit_flag], 1
+	je 		draw_bye
+	cmp 	[exit_flag], 2
+	je 		draw_game_over
+	jmp 	draw_bye
+draw_game_over:
+	mov 	si, offset game_over
+	mov 	dx, 0d13h
+	mov 	ch, 0
+game_over_height:
+	mov 	cl, 0
+game_over_width:
+	lodsb
+	push 	dx
+	push 	cx
+	add 	dx, cx
+	call 	set_num
+	pop 	cx
+	pop 	dx
+	add 	cl, 1
+	cmp 	cl, 26
+	jne 	game_over_width
+	add 	ch, 1
+	cmp 	ch, 13
+	jne 	game_over_height
+	xor 	ax, ax
+	int 	16h
+draw_bye:
+	mov 	si, offset bye
+	mov 	dx, 0d13h
+	mov 	ch, 0
+draw_bye_height:
+	mov 	cl, 0
+draw_bye_width:
+	lodsb
+	push 	dx
+	push 	cx
+	add 	dx, cx
+	call 	set_num
+	pop 	cx
+	pop 	dx
+	add 	cl, 1
+	cmp 	cl, 26
+	jne 	draw_bye_width
+	add 	ch, 1
+	cmp 	ch, 13
+	jne 	draw_bye_height
+	xor 	ax, ax
+	int 	16h
+	xor 	ax, ax
+	mov 	al, [prev_mode]
+	int 	10h
+	ret
+end start
