@@ -7,112 +7,112 @@ start:
 	jmp 	S
 
 barrier 		equ 68
-food_color 		equ 78
+food_color 		equ 50
 first_snake_color 	equ 3
 first_snake_head_color 	equ 11
 second_snake_color 	equ 5
-second_snake_head_color 	equ 13
-timer_velocity 		equ	3
+second_snake_head_color	equ 13
+timer_velocity 		equ 3
 game_over 	db 26 dup(0)
-			db 2 dup(0), 4 dup(12), 2 dup(0), 2 dup(12), 2 dup(0), 12, 4 dup(0), 12, 0, 5 dup(12), 2 dup(0)
-			db 2 dup(0), 12, 4 dup(0), 12, 2 dup(0), 12, 0, 2 dup(12), 2 dup(0), 2 dup(12), 0, 12, 6 dup(0)
-			db 2 dup(0), 12, 0, 2 dup(12), 0, 4 dup(12), 0, 12, 0, 2 dup(12), 0, 12, 0, 4 dup(12), 3 dup(0)
-			db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 2 dup(0), 12, 0, 12, 4 dup(0), 12, 0, 12, 6 dup(0)
-			db 2 dup(0), 4 dup(12), 0, 12, 2 dup(0), 12, 0, 12, 4 dup(0), 12, 0, 5 dup(12), 2 dup(0)
-			db 26 dup(0)
-			db 2 dup(0), 4 dup(12), 0, 12, 3 dup(0), 12, 0, 5 dup(12), 0, 5 dup(12), 2 dup(0)
-			db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 3 dup(0), 12, 0, 12, 5 dup(0), 12, 3 dup(0), 12, 2 dup(0)
-			db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 3 dup(0), 12, 0, 4 dup(12), 2 dup(0), 5 dup(12), 2 dup(0)
-			db 2 dup(0), 12, 2 dup(0), 12, 2 dup(0), 12, 0, 12, 2 dup(0), 12, 5 dup(0), 12, 0, 2 dup(12), 3 dup(0)
-			db 2 dup(0), 4 dup(12), 3 dup(0), 12, 3 dup(0), 5 dup(12), 0, 12, 2 dup(0), 2 dup(12), 2 dup(0)
-			db 26 dup(0)
-bye			db 26 dup(food_color)
-			db food_color, 24 dup(0), food_color
-			db food_color, 24 dup(0), food_color
-			db food_color, 24 dup(0), food_color
-			db food_color, 4 dup(0), 5 dup(food_color), 0, food_color, 3 dup(0), food_color, 0, 4 dup(food_color), 4 dup(0), food_color
-			db food_color, 4 dup(0), food_color, 3 dup(0), food_color, 0, food_color, 3 dup(0), food_color, 0, food_color, 7 dup(0), food_color
-			db food_color, 4 dup(0), 4 dup(food_color), 3 dup(0), 3 dup(food_color), 2 dup(0), 3 dup(food_color), 5 dup(0), food_color
-			db food_color, 4 dup(0), food_color, 3 dup(0), food_color, 3 dup(0), food_color, 3 dup(0), food_color, 7 dup(0), food_color
-			db food_color, 4 dup(0), 5 dup(food_color), 3 dup(0), food_color, 3 dup(0), 4 dup(food_color), 4 dup(0), food_color
-			db food_color, 24 dup(0), food_color
-			db food_color, 24 dup(0), food_color
-			db food_color, 24 dup(0), food_color
-			db 26 dup(food_color)
+		db 2 dup(0), 4 dup(12), 2 dup(0), 2 dup(12), 2 dup(0), 12, 4 dup(0), 12, 0, 5 dup(12), 2 dup(0)
+		db 2 dup(0), 12, 4 dup(0), 12, 2 dup(0), 12, 0, 2 dup(12), 2 dup(0), 2 dup(12), 0, 12, 6 dup(0)
+		db 2 dup(0), 12, 0, 2 dup(12), 0, 4 dup(12), 0, 12, 0, 2 dup(12), 0, 12, 0, 4 dup(12), 3 dup(0)
+		db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 2 dup(0), 12, 0, 12, 4 dup(0), 12, 0, 12, 6 dup(0)
+		db 2 dup(0), 4 dup(12), 0, 12, 2 dup(0), 12, 0, 12, 4 dup(0), 12, 0, 5 dup(12), 2 dup(0)
+		db 26 dup(0)
+		db 2 dup(0), 4 dup(12), 0, 12, 3 dup(0), 12, 0, 5 dup(12), 0, 5 dup(12), 2 dup(0)
+		db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 3 dup(0), 12, 0, 12, 5 dup(0), 12, 3 dup(0), 12, 2 dup(0)
+		db 2 dup(0), 12, 2 dup(0), 12, 0, 12, 3 dup(0), 12, 0, 4 dup(12), 2 dup(0), 5 dup(12), 2 dup(0)
+		db 2 dup(0), 12, 2 dup(0), 12, 2 dup(0), 12, 0, 12, 2 dup(0), 12, 5 dup(0), 12, 0, 2 dup(12), 3 dup(0)
+		db 2 dup(0), 4 dup(12), 3 dup(0), 12, 3 dup(0), 5 dup(12), 0, 12, 2 dup(0), 2 dup(12), 2 dup(0)
+		db 26 dup(0)
+bye		db 26 dup(food_color)
+		db food_color, 24 dup(0), food_color
+		db food_color, 24 dup(0), food_color
+		db food_color, 24 dup(0), food_color
+		db food_color, 4 dup(0), 5 dup(food_color), 0, food_color, 3 dup(0), food_color, 0, 4 dup(food_color), 4 dup(0), food_color
+		db food_color, 4 dup(0), food_color, 3 dup(0), food_color, 0, food_color, 3 dup(0), food_color, 0, food_color, 7 dup(0), food_color
+		db food_color, 4 dup(0), 4 dup(food_color), 3 dup(0), 3 dup(food_color), 2 dup(0), 3 dup(food_color), 5 dup(0), food_color
+		db food_color, 4 dup(0), food_color, 3 dup(0), food_color, 3 dup(0), food_color, 3 dup(0), food_color, 7 dup(0), food_color
+		db food_color, 4 dup(0), 5 dup(food_color), 3 dup(0), food_color, 3 dup(0), 4 dup(food_color), 4 dup(0), food_color
+		db food_color, 24 dup(0), food_color
+		db food_color, 24 dup(0), food_color
+		db food_color, 24 dup(0), food_color
+		db 26 dup(food_color)
 map 		db 64 dup(barrier)
-			db barrier, 62 dup(0), barrier
-			db barrier, 62 dup(0), barrier
-			db barrier, 62 dup(0), barrier
-			db barrier, 3 dup(0), 56 dup(barrier), 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), 48 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 40 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 31 dup(barrier), 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 27 dup(barrier), 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 35 dup(barrier), 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 3 dup(0), 44 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 3 dup(0), 52 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier
-			db barrier, 62 dup(0), barrier
-			db barrier, 62 dup(0), barrier
-			db barrier, 62 dup(0), barrier
-			db 64 dup(barrier)
-vectors 	dw 	48h, next_dir1, -100h
-			dw 	4bh, next_dir1, -1h
-			dw 	50h, next_dir1, 100h
-			dw 	4dh, next_dir1, 1h
-			dw 	11h, next_dir2, -100h
-			dw 	1eh, next_dir2, -1h
-			dw 	1fh, next_dir2, 100h
-			dw 	20h, next_dir2, 1h
-prev_mode 	db 	?
-mess 		db 	'Type snakes count (1 or 2)', 24h
-snakes_count 	db 	?
-old_9vect_seg 	dw 	?
-old_9vect_off 	dw 	?
-old_1c_vect_seg 	dw 	?
-old_1c_vect_off 	dw 	?
-next_dir1 	dw 	1
-next_dir2 	dw 	-1
-direction1 	dw 	1
-direction2 	dw 	-1
-exit_flag 	dw 	0
-buffer 		dw 	20 dup (0)
-head 		dw 	offset buffer
-tail 		dw 	offset buffer
-snake1 		dw 	0201h, 0202h, 0203h, 147 dup(0)
-shead1 		dw 	offset snake1 + 4
-stail1 		dw 	offset snake1
-snake2 		dw 	253eh, 253dh, 253ch, 147 dup(0)
-shead2 		dw	offset snake2 + 4
-stail2 		dw 	offset snake2
-curr_proc 	db 	1
-grow_snake 	db 	0
-tics 		db 	timer_velocity
-prev_pos 	dw 	?
-play_sound 	db 	0
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), 52 dup(barrier), 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), 48 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 40 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 31 dup(barrier), 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 27 dup(barrier), 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 35 dup(barrier), 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 3 dup(0), 44 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 3 dup(0), 52 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db 64 dup(barrier)
+vectors 	dw 48h, next_dir1, -100h
+		dw 4bh, next_dir1, -1h
+		dw 50h, next_dir1, 100h
+		dw 4dh, next_dir1, 1h
+		dw 11h, next_dir2, -100h
+		dw 1eh, next_dir2, -1h
+		dw 1fh, next_dir2, 100h
+		dw 20h, next_dir2, 1h
+prev_mode 	db ?
+mess 		db 'Type snakes count (1 or 2)', 24h
+snakes_count 	db ?
+old_9vect_seg 	dw ?
+old_9vect_off 	dw ?
+old_1c_vect_seg	dw ?
+old_1c_vect_off	dw ?
+next_dir1 	dw 1
+next_dir2 	dw -1
+direction1 	dw 1
+direction2 	dw -1
+exit_flag 	dw 0
+buffer 		dw 20 dup (0)
+head 		dw offset buffer
+tail 		dw offset buffer
+snake1 		dw 0201h, 0202h, 0203h, 147 dup(0)
+shead1 		dw offset snake1 + 4
+stail1 		dw offset snake1
+snake2 		dw 253eh, 253dh, 253ch, 147 dup(0)
+shead2 		dw offset snake2 + 4
+stail2 		dw offset snake2
+curr_proc 	db 1
+grow_snake 	db 0
+tics 		db timer_velocity
+prev_pos 	dw ?
+play_sound 	db 0
 
 handler_1c proc
 	cli
@@ -126,10 +126,10 @@ handler_9 proc
 	push 	ax
 	push 	si
 	push 	di
-	in 		al, 60h
+	in 	al, 60h
 	push 	ax
-	in 		al, 61h
-	or 		al, 80h
+	in 	al, 61h
+	or 	al, 80h
 	out 	61h, al
 	and 	al, 7fh
 	out 	61h, al
@@ -137,13 +137,13 @@ handler_9 proc
 	test 	al, 80h
 	jnz 	end_handler_9
 	cmp 	al, 1
-	je 		ex_flag
+	je 	ex_flag
 	mov 	cx, 8
 	mov 	ah, 0
 	mov 	di, offset vectors
 @@1:
 	scasw
-	je 		@@2
+	je 	@@2
 	add 	di, 4
 	loop 	@@1
 	jmp 	end_handler_9
@@ -172,7 +172,7 @@ first_snake_step proc
 	mov 	dx, [bx]
 	mov 	[prev_pos], dx
 	mov 	al, first_snake_color
-	call 	set_num
+	call 	write_in_map
 	add 	[shead1], 2
 	cmp 	[shead1], offset shead1
 	jne 	@@1
@@ -181,23 +181,22 @@ first_snake_step proc
 	mov 	bx, [next_dir1]
 	add 	bx, [direction1]
 	cmp 	bx, 0
-	je 		@@2
+	je 	@@2
 	mov 	bx, [next_dir1]
 	mov 	[direction1], bx
 @@2:
 	add 	dx, [direction1]
-	call 	get_new_dx
+	call 	get_new_snake_position
 	mov 	bx, [shead1]
 	mov 	[bx], dx
 	mov 	al, first_snake_head_color
-	call 	set_num
-
+	call 	write_in_map
 	cmp 	[grow_snake], 1
-	je 		@@3
+	je 	@@3
 	mov 	bx, [stail1]
 	mov 	dx, [bx]
 	mov 	al, 0
-	call 	set_num
+	call 	write_in_map
 	add 	[stail1], 2
 	cmp 	[stail1], offset shead1
 	jne 	@@3
@@ -213,7 +212,7 @@ second_snake_step proc
 	mov 	dx, [bx]
 	mov 	[prev_pos], dx
 	mov 	al, second_snake_color
-	call 	set_num
+	call 	write_in_map
 	add 	[shead2], 2
 	cmp 	[shead2], offset shead2
 	jne 	@@1
@@ -227,18 +226,18 @@ second_snake_step proc
 	mov 	[direction2], bx
 @@2:
 	add 	dx, [direction2]
-	call 	get_new_dx
+	call 	get_new_snake_position
 	mov 	bx, [shead2]
 	mov 	[bx], dx
 	mov 	al, second_snake_head_color
-	call 	set_num
+	call 	write_in_map
 
 	cmp 	[grow_snake], 1
 	je 		@@3
 	mov 	bx, [stail2]
 	mov 	dx, [bx]
 	mov 	al, 0
-	call 	set_num
+	call 	write_in_map
 	add 	[stail2], 2
 	cmp 	[stail2], offset shead2
 	jne 	@@3
@@ -264,65 +263,64 @@ set_food proc
 	mov 	dl, 64
 	div 	dl
 	mov 	dl, ah
-	call 	get_value
+	call 	get_map_cell
 	cmp 	al, 0
 	jne 	@@1
-
 	mov 	al, food_color
-	call 	set_num
+	call 	write_in_map
 	pop 	dx
 	pop 	ax
 	ret
 set_food endp
 
-get_new_dx proc
+get_new_snake_position proc
 	push 	ax
 	cmp 	dl, -1
-	je 		@@3
+	je 	@@3
 	cmp 	dl, 64
-	je 		@@4
+	je 	@@4
 	cmp 	dh, -1
-	je 		@@1
+	je 	@@1
 	cmp 	dh, 40
-	je 		@@2
-	jmp 	check_cell
+	je 	@@2
+	jmp 	resolve_cell
 @@5:
 	scasw
-	je 		@@6
+	je 	@@6
 	add 	di, 2
 	loop 	@@5
 @@6:
 	mov 	si, di
 	lodsw
 	mov 	dx, ax
-	jmp 	check_cell
+	jmp 	resolve_cell
 @@4:
 	mov 	dl, 0
-	jmp 	check_cell
+	jmp 	resolve_cell
 @@3:
 	mov 	dl, 63
 	add 	dh, 1
-	jmp 	check_cell
+	jmp 	resolve_cell
 @@2:
 	mov 	dh, 0
-	jmp 	check_cell
+	jmp 	resolve_cell
 @@1:
  	mov 	dh, 39
- 	jmp 	check_cell
-check_cell:
-	call 	get_value
+ 	jmp 	resolve_cell
+resolve_cell:
+	call 	get_map_cell
 	cmp 	al, food_color
-	je 		set_grow_snake
+	je 	set_grow_snake
 	cmp 	al, barrier
-	je 		lose
+	je 	exit_case
 	cmp 	al, first_snake_color
-	je 		lose
+	je 	exit_case
 	cmp 	al, second_snake_color
-	je 		lose
+	je 	exit_case
 	cmp 	al, first_snake_head_color
-	je 		no_lose
+	je 	resolve_case
 	cmp 	al, second_snake_head_color
-	je 		no_lose
+	je 	resolve_case
 	pop 	ax
 	ret
 set_grow_snake:
@@ -331,17 +329,17 @@ set_grow_snake:
 	mov 	[grow_snake], 1
 	pop 	ax
  	ret
-lose:
+exit_case:
 	mov 	[exit_flag], 2
 	pop 	ax
 	ret
-no_lose:
+resolve_case:
 	mov 	[exit_flag], 1
 	pop 	ax
 	ret
-get_new_dx endp
+get_new_snake_position endp
 
-get_value proc
+get_map_cell proc
 	push 	dx
 	push 	bx
 	xor 	ax, ax
@@ -357,9 +355,9 @@ get_value proc
 	pop 	bx
 	pop 	dx
 	ret
-get_value endp
+get_map_cell endp
 
-set_num proc
+write_in_map proc
 	xor 	bx, bx
 	mov 	bl, dh
 	shl 	bx, 6
@@ -370,15 +368,15 @@ set_num proc
 	add 	di, bx
 	stosb
 	pop 	dx
-	call 	write_cell
+	call 	draw_cell
 	ret
-set_num endp
+write_in_map endp
 
-write_cell proc
+draw_cell proc
 	push 	es
 	push 	dx
 	push 	ax
-	mov 	ax, 0a000h
+	mov 	ax, 0A000h
 	mov 	es, ax
 	xor 	ax, ax
 	mov 	al, dh
@@ -402,7 +400,7 @@ write_cell proc
 	pop 	dx
 	pop 	es
 	ret
-write_cell endp
+draw_cell endp
 
 S:
 	mov 	ah, 0fh
@@ -444,8 +442,8 @@ count_set:
 map_height:
 	mov 	dl, 0
 map_width:
-	call 	get_value
-	call 	write_cell
+	call 	get_map_cell
+	call 	draw_cell
 	add 	dl, 1
 	cmp 	dl, 64
 	jne 	map_width
@@ -454,22 +452,22 @@ map_width:
 	jne 	map_height
 	mov 	dx, 0201h
 	mov 	al, first_snake_color
-	call	set_num
+	call	write_in_map
 	inc 	dx
-	call 	set_num
+	call 	write_in_map
 	inc 	dx
 	mov 	al, first_snake_head_color
-	call 	set_num
+	call 	write_in_map
 	cmp 	[snakes_count], 2
 	jne 	continue_init
 	mov 	dx, 253eh
 	mov 	al, second_snake_color
-	call	set_num
+	call	write_in_map
 	dec 	dx
-	call 	set_num
+	call 	write_in_map
 	dec 	dx
 	mov 	al, second_snake_head_color
-	call 	set_num
+	call 	write_in_map
 continue_init:
 	call 	set_food
 mainloop:
@@ -529,7 +527,7 @@ game_over_width:
 	push 	dx
 	push 	cx
 	add 	dx, cx
-	call 	set_num
+	call 	write_in_map
 	pop 	cx
 	pop 	dx
 	add 	cl, 1
@@ -551,7 +549,7 @@ draw_bye_width:
 	push 	dx
 	push 	cx
 	add 	dx, cx
-	call 	set_num
+	call 	write_in_map
 	pop 	cx
 	pop 	dx
 	add 	cl, 1
