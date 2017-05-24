@@ -8,6 +8,7 @@ start:
 
 barrier 		equ 68
 food_color 		equ 50
+speed_apple_color	equ 2
 first_snake_color 	equ 3
 first_snake_head_color 	equ 11
 second_snake_color 	equ 5
@@ -113,6 +114,9 @@ grow_snake 	db 0
 tics 		db timer_velocity
 prev_pos 	dw ?
 play_sound 	db 0
+accelerate_first	db 0
+accelerate_second	db 0
+last_eaten	db food_color
 
 handler_1c proc
 	cli
@@ -266,7 +270,7 @@ set_food proc
 	call 	get_map_cell
 	cmp 	al, 0
 	jne 	@@1
-	mov 	al, food_color
+	mov 	al, last_eaten
 	call 	write_in_map
 	pop 	dx
 	pop 	ax
@@ -310,7 +314,9 @@ get_new_snake_position proc
 resolve_cell:
 	call 	get_map_cell
 	cmp 	al, food_color
-	je 	set_grow_snake
+	je 	set_grow_snake_food
+	cmp	al, speed_apple_color
+	je	accelerate
 	cmp 	al, barrier
 	je 	exit_case
 	cmp 	al, first_snake_color
@@ -323,6 +329,23 @@ resolve_cell:
 	je 	resolve_case
 	pop 	ax
 	ret
+accelerate:
+	mov	last_eaten, speed_apple_color
+	cmp	[curr_proc], 1
+	je	accelerate_first_snake
+	mov	[accelerate_second], 20
+	jmp	set_grow_snake
+accelerate_first_snake:
+	mov	[accelerate_first], 20
+	jmp	set_grow_snake
+set_grow_snake_food:
+	mov	last_eaten, food_color
+	cmp	[curr_proc], 1
+	je	slow_first_snake
+	mov	[accelerate_second], 0
+	jmp	set_grow_snake
+slow_first_snake:
+	mov	[accelerate_first], 0
 set_grow_snake:
 	call 	set_food
 	mov 	[play_sound], 1
@@ -469,12 +492,24 @@ map_width:
 	mov 	al, second_snake_head_color
 	call 	write_in_map
 continue_init:
+	mov	last_eaten, speed_apple_color
 	call 	set_food
+	mov	last_eaten, food_color
+	call	set_food
 mainloop:
 	call 	first_snake_step
+	cmp	[accelerate_first], 0
+	je	no_accelerate
+	sub	[accelerate_first], 1
+	call	first_snake_step
+no_accelerate:
 	cmp 	[snakes_count], 2
 	jne 	delay
 	call 	second_snake_step
+	cmp	[accelerate_second], 0
+	je	delay
+	sub	[accelerate_second], 1
+	call	second_snake_step
 delay:
 	cmp 	[play_sound], 1
 	jne 	no_sound
