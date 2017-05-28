@@ -40,46 +40,46 @@ bye		db 26 dup(food_color)
 		db food_color, 24 dup(0), food_color
 		db food_color, 24 dup(0), food_color
 		db 26 dup(food_color)
-map 	db 64 dup(barrier)
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
-		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db barrier, 62 dup(0), barrier
-		db 64 dup(barrier)
+map 	db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 11 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 11 dup(0)
+		db 11 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 11 dup(0)
+		db 11 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 11 dup(0)
+		db 11 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 11 dup(0)
+		db 11 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 11 dup(0)
+		db 11 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 11 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 11 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 11 dup(0)
+		db 11 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 11 dup(0)
+		db 11 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 11 dup(0)
+		db 11 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 11 dup(0)
+		db 11 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 11 dup(0)
+		db 11 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 11 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
+		db 64 dup(0)
 vectors 	dw 48h, next_dir1, -100h
 		dw 4bh, next_dir1, -1h
 		dw 50h, next_dir1, 100h
