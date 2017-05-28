@@ -40,42 +40,42 @@ bye		db 26 dup(food_color)
 		db food_color, 24 dup(0), food_color
 		db food_color, 24 dup(0), food_color
 		db 26 dup(food_color)
-map 		db 64 dup(barrier)
+map 	db 64 dup(barrier)
 		db barrier, 62 dup(0), barrier
 		db barrier, 62 dup(0), barrier
 		db barrier, 62 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), 52 dup(barrier), 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 54 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), 48 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 46 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 40 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 38 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 31 dup(barrier), 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 29 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 25 dup(0), barrier, 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 27 dup(barrier), 3 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 33 dup(0), barrier, 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), 35 dup(barrier), 4 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), barrier, 42 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 3 dup(0), 44 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), barrier, 50 dup(0), barrier, 3 dup(0), barrier, 3 dup(0), barrier
-		db barrier, 3 dup(0), 52 dup(barrier), 3 dup(0), barrier, 3 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 5 dup(barrier), 32 dup(0), 5 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
+		db barrier, 10 dup(0), 15 dup(barrier), 12 dup(0), 15 dup(barrier), 10 dup(0), barrier
+		db barrier, 62 dup(0), barrier
+		db barrier, 62 dup(0), barrier
 		db barrier, 62 dup(0), barrier
 		db barrier, 62 dup(0), barrier
 		db barrier, 62 dup(0), barrier
